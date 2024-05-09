@@ -22,16 +22,14 @@ type Props = {
   onUpdate?: any;
 };
 
-// type Props = {};
 const ProfileForm = ({ user, onUpdate }: Props) => {
-  // const ProfileForm = (props: Props) => {
   const [isLoading, setIsLoading] = useState(false);
   const form = useForm<z.infer<typeof EditUserProfileSchema>>({
     mode: "onChange",
     resolver: zodResolver(EditUserProfileSchema),
     defaultValues: {
-      name: "user.name",
-      email: "user.email",
+      name: user.name,
+      email: user.email,
     },
   });
 
@@ -39,13 +37,13 @@ const ProfileForm = ({ user, onUpdate }: Props) => {
     values: z.infer<typeof EditUserProfileSchema>
   ) => {
     setIsLoading(true);
-    // await onUpdate(values.name);
+    await onUpdate(values.name);
     setIsLoading(false);
   };
 
-  //   useEffect(() => {
-  // form.reset({ name: user.name, email: user.email });
-  //   }, [user]);
+  useEffect(() => {
+    form.reset({ name: user.name, email: user.email });
+  }, [user]);
 
   return (
     <Form {...form}>
