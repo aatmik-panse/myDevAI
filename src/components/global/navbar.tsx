@@ -1,6 +1,7 @@
 import { Link } from "lucide-react";
 import React from "react";
 import { MenuIcon } from "lucide-react";
+import { UserButton } from "@clerk/nextjs";
 
 type Props = {};
 
@@ -40,6 +41,7 @@ const Navbar = async (props: Props) => {
           </span>
         </a>
         {/* {user ? <UserButton afterSignOutUrl="/" /> : null} */}
+        <UserButton />
         <MenuIcon className="md:hidden" />
       </aside>
     </header>
