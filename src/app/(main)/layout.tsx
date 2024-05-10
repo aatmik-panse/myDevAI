@@ -1,6 +1,7 @@
 import InfoBar from "@/components/infobar";
 import Sidebar from "@/components/sidebar";
 import React from "react";
+import Home from "./page";
 
 type Props = { children: React.ReactNode };
 
