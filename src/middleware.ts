@@ -1,6 +1,5 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
-
 // Any route placed here will make sure that it is protected
 const isProtectedRoute = createRouteMatcher(["/subaccount(.*)", "/agency"]);
 
