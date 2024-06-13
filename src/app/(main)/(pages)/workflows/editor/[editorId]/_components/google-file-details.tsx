@@ -1,5 +1,5 @@
 import { Card, CardContent, CardDescription } from "@/components/ui/card";
-// import { onAddTemplate } from '@/lib/editor-utils'
+import { onAddTemplate } from "@/lib/editor-utils";
 import { ConnectionProviderProps } from "@/providers/connections-provider";
 import React from "react";
 
@@ -29,9 +29,9 @@ const GoogleFileDetails = ({ gFile, nodeConnection, title }: Props) => {
           {details.map((detail) => (
             <div
               key={detail}
-              // onClick={() =>
-              //   onAddTemplate(nodeConnection, title, gFile[detail])
-              // }
+              onClick={() =>
+                onAddTemplate(nodeConnection, title, gFile[detail])
+              }
               className="flex cursor-pointer gap-2 rounded-full bg-white px-3 py-1 text-gray-500"
             >
               {detail}:{" "}
