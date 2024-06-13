@@ -82,8 +82,12 @@ export const onCreateNewPageInDatabase = async (
   const notion = new Client({
     auth: accessToken,
   });
+  console.log("👽" + notion);
+  console.log("👽" + Client);
+  console.log("👽" + content);
+  console.log("👽" + accessToken);
+  console.log("👽" + databaseId);
 
-  console.log(databaseId);
   const response = await notion.pages.create({
     parent: {
       type: "database_id",
@@ -93,7 +97,7 @@ export const onCreateNewPageInDatabase = async (
       name: [
         {
           text: {
-            content: content,
+            content: content.toString(),
           },
         },
       ],
