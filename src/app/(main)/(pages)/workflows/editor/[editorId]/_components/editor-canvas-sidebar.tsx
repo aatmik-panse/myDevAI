@@ -14,11 +14,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-// import {
-//   fetchBotSlackChannels,
-//   onConnections,
-//   onDragStart,
-// } from "@/lib/editor-utils";
+import {
+  fetchBotSlackChannels,
+  onConnections,
+  onDragStart,
+} from "@/lib/editor-utils";
 import EditorCanvasIconHelper from "./editor-canvas-card-icon-hepler";
 import {
   Accordion,
@@ -28,7 +28,7 @@ import {
 } from "@/components/ui/accordion";
 import RenderConnectionAccordion from "./render-connection-accordion";
 import RenderOutputAccordion from "./render-output-accordian";
-// import { useFuzzieStore } from "@/store";
+import { useFuzzieStore } from "@/store";
 
 type Props = {
   nodes: EditorNodeType[];
@@ -37,21 +37,21 @@ type Props = {
 const EditorCanvasSidebar = ({ nodes }: Props) => {
   const { state } = useEditor();
   const { nodeConnection } = useNodeConnections();
-  // const { googleFile, setSlackChannels } = useFuzzieStore();
-  // useEffect(() => {
-  //   if (state) {
-  //     onConnections(nodeConnection, state, googleFile);
-  //   }
-  // }, [state]);
+  const { googleFile, setSlackChannels } = useFuzzieStore();
+  useEffect(() => {
+    if (state) {
+      onConnections(nodeConnection, state, googleFile);
+    }
+  }, [state]);
 
-  // useEffect(() => {
-  //   if (nodeConnection.slackNode.slackAccessToken) {
-  //     fetchBotSlackChannels(
-  //       nodeConnection.slackNode.slackAccessToken,
-  //       setSlackChannels
-  //     );
-  //   }
-  // }, [nodeConnection]);
+  useEffect(() => {
+    if (nodeConnection.slackNode.slackAccessToken) {
+      fetchBotSlackChannels(
+        nodeConnection.slackNode.slackAccessToken,
+        setSlackChannels
+      );
+    }
+  }, [nodeConnection]);
 
   return (
     <aside>
@@ -73,10 +73,8 @@ const EditorCanvasSidebar = ({ nodes }: Props) => {
                 key={cardKey}
                 draggable
                 className="w-full cursor-grab border-black bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-900"
-                onDragStart={
-                  (event) =>
-                    // onDragStart(event, cardKey as EditorCanvasTypes)
-                    event.preventDefault() /// revert this can cause issues
+                onDragStart={(event) =>
+                  onDragStart(event, cardKey as EditorCanvasTypes)
                 }
               >
                 <CardHeader className="flex flex-row items-center gap-4 p-4">
