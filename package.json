@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/clerk-sdk-node": "^5.0.5",
     "@clerk/nextjs": "^5.0.7",
     "@hookform/resolvers": "^3.3.4",
     "@notionhq/client": "^2.2.14",
@@ -32,6 +33,7 @@
     "@uploadcare/blocks": "^0.39.0",
     "axios": "^1.6.8",
     "class-variance-authority": "^0.7.0",
+    "clerk": "^0.8.3",
     "clsx": "^2.1.1",
     "cmdk": "0.2.0",
     "framer-motion": "^11.0.13",
